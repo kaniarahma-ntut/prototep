@@ -1,12 +1,18 @@
 {
     "version": 2,
-    "framework": null,
-    "buildCommand": "npm install && npm run build",
-    "outputDirectory": "public",
-    "rewrites": [
+    "plugins": [],
+    "functions": {
+        "api/*.php": { "runtime": "vercel-php@0.7.5" },
+        "index.php": { "runtime": "vercel-php@0.7.5" }
+    },
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "/index.php"
+            "src": "/build/(.*)",
+            "dest": "/build/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.php"
         }
     ]
 }
